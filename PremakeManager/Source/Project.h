@@ -51,5 +51,5 @@ struct Project
     std::vector<std::string> includedirs;
 
     std::vector<std::string> defines;
-    std::vector<Project> links;
+    std::vector<std::shared_ptr<Project>> links;
 };
