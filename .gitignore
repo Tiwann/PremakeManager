@@ -1,0 +1,9 @@
+.idea
+.vs
+.vscode
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+Binaries
+Intermediate
