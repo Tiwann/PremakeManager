@@ -1,6 +1,5 @@
 #include "Logger.h"
 #include <iostream>
-#include <format>
 #include <ctime>
 #include <chrono>
 
@@ -17,5 +16,5 @@ Logger& Logger::GetLogger()
 
 void Logger::Log(Verbosity verbosity, const std::string& message) const
 {
-	std::cout << std::format(message);
+	std::cout << message;
 }

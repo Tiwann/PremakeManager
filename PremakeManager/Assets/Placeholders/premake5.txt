@@ -1,0 +1,7 @@
+workspace %name%
+    architecture %arch%
+    configurations %configs%
+    flags %flags%
+    startproject %startproj%
+
+    %includes%

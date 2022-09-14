@@ -9,6 +9,7 @@
 	#define LOG_WARNING(...)	Logger::GetLogger().Log(Verbosity::Warning, __VA_ARGS__)
 	#define LOG_FATAL(...)		Logger::GetLogger().Log(Verbosity::Fatal, __VA_ARGS__)
 #endif
+
 enum class Verbosity : int8_t
 {
 	Unknown = -1,

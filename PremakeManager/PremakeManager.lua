@@ -13,7 +13,8 @@ project "PremakeManager"
 	}
 
 	includedirs {
-
+        "%{wks.location}/Vendor/glfw/include",
+        "%{wks.location}/Vendor/glad/include"
 	}
 
 	defines {
@@ -21,7 +22,8 @@ project "PremakeManager"
 	}
 
 	links {
-
+        "glfw",
+        "glad"
 	}
 
 	filter "configurations:Debug"

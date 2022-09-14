@@ -9,3 +9,5 @@ workspace "PremakeManager"
 
 	include "Vendor/Premake5/Clean.lua"
 	include "PremakeManager/PremakeManager.lua"
+	include "Vendor/glfw/glfw.lua"
+	include "Vendor/glad/glad.lua"
