@@ -8,7 +8,13 @@
 	#define LOG_ERROR(...)		Logger::GetLogger().Log(Verbosity::Error, __VA_ARGS__)
 	#define LOG_WARNING(...)	Logger::GetLogger().Log(Verbosity::Warning, __VA_ARGS__)
 	#define LOG_FATAL(...)		Logger::GetLogger().Log(Verbosity::Fatal, __VA_ARGS__)
+#else
+	#define LOG_TEXT(...)
+	#define LOG_ERROR(...)		
+	#define LOG_WARNING(...)	
+	#define LOG_FATAL(...)
 #endif
+
 
 enum class Verbosity : int8_t
 {
