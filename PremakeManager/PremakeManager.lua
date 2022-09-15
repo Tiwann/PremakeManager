@@ -14,7 +14,9 @@ project "PremakeManager"
 
 	includedirs {
         "%{wks.location}/Vendor/glfw/include",
-        "%{wks.location}/Vendor/glad/include"
+        "%{wks.location}/Vendor/glad/include",
+        "%{wks.location}/Vendor/spdlog/include",
+        "%{wks.location}/Vendor/imgui",
 	}
 
 	defines {
@@ -23,7 +25,9 @@ project "PremakeManager"
 
 	links {
         "glfw",
-        "glad"
+        "glad",
+        "spdlog",
+        "imgui"
 	}
 
 	filter "configurations:Debug"

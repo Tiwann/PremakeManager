@@ -1,3 +1,9 @@
 [submodule "Vendor/glfw"]
 	path = Vendor/glfw
 	url = git@github.com:Tiwann/glfw.git
+[submodule "Vendor/spdlog"]
+	path = Vendor/spdlog
+	url = git@github.com:Tiwann/spdlog.git
+[submodule "Vendor/imgui"]
+	path = Vendor/imgui
+	url = git@github.com:Tiwann/imgui.git
