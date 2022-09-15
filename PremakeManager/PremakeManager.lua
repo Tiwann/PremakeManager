@@ -17,6 +17,7 @@ project "PremakeManager"
         "%{wks.location}/Vendor/glad/include",
         "%{wks.location}/Vendor/spdlog/include",
         "%{wks.location}/Vendor/imgui",
+        "%{wks.location}/Vendor/imgui/backends",
 	}
 
 	defines {

@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <string>
 #include <vector>
+#include <memory>
 #include "Project.h"
 
 enum class Architecture : int8_t

@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include <vector>
+#include <string>
+#include <memory>
 
 enum class Dialect : int8_t
 {
