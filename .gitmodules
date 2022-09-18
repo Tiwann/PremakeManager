@@ -7,3 +7,6 @@
 [submodule "Vendor/imgui"]
 	path = Vendor/imgui
 	url = git@github.com:Tiwann/imgui.git
+[submodule "Vendor/fmt"]
+	path = Vendor/fmt
+	url = git@github.com:Tiwann/fmt.git

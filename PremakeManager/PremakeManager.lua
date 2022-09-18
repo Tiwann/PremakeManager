@@ -13,11 +13,12 @@ project "PremakeManager"
 	}
 
 	includedirs {
-        "%{wks.location}/Vendor/glfw/include",
-        "%{wks.location}/Vendor/glad/include",
-        "%{wks.location}/Vendor/spdlog/include",
-        "%{wks.location}/Vendor/imgui",
-        "%{wks.location}/Vendor/imgui/backends",
+		"%{wks.location}/Vendor/glfw/include",
+		"%{wks.location}/Vendor/glad/include",
+		"%{wks.location}/Vendor/spdlog/include",
+		"%{wks.location}/Vendor/imgui",
+		"%{wks.location}/Vendor/imgui/backends",
+		"%{wks.location}/Vendor/fmt/include",
 	}
 
 	defines {
@@ -25,10 +26,11 @@ project "PremakeManager"
 	}
 
 	links {
-        "glfw",
-        "glad",
-        "spdlog",
-        "imgui"
+		"glfw",
+		"glad",
+		"spdlog",
+		"imgui",
+		"fmt"
 	}
 
 	filter "configurations:Debug"
