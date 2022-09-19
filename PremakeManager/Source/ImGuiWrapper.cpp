@@ -6,6 +6,7 @@ bool ImGuiWrapper::Initialize(const std::string& glsl_version, GLFWwindow* windo
     ImGuiContext* context = ImGui::CreateContext();
     if (!context) return false;
     ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     ImGui::StyleColorsDark();
     if(stylefunc) stylefunc();
     if(!ImGui_ImplGlfw_InitForOpenGL(window, true)) return false;
