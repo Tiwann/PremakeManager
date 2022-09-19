@@ -2,6 +2,7 @@ project "PremakeManager"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++20"
+	staticruntime "On"
 
 	targetdir(binaries)
 	objdir(objs)
@@ -17,6 +18,7 @@ project "PremakeManager"
 		"%{wks.location}/Vendor/glad/include",
 		"%{wks.location}/Vendor/imgui",
 		"%{wks.location}/Vendor/imgui/backends",
+		"%{wks.location}/Vendor/fmt/include",
 	}
 
 	defines {
@@ -26,6 +28,7 @@ project "PremakeManager"
 		"glfw",
 		"glad",
 		"imgui",
+		"fmt"
 	}
 
 	filter "configurations:Debug"
