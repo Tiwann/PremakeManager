@@ -9,28 +9,23 @@ project "PremakeManager"
 	files {
 		"Source/**.cpp",
 		"Source/**.h",
-		"Source/**.inl"
+		"Source/**.inl",
 	}
 
 	includedirs {
 		"%{wks.location}/Vendor/glfw/include",
 		"%{wks.location}/Vendor/glad/include",
-		"%{wks.location}/Vendor/spdlog/include",
 		"%{wks.location}/Vendor/imgui",
 		"%{wks.location}/Vendor/imgui/backends",
-		"%{wks.location}/Vendor/fmt/include",
 	}
 
 	defines {
-
 	}
 
 	links {
 		"glfw",
 		"glad",
-		"spdlog",
 		"imgui",
-		"fmt"
 	}
 
 	filter "configurations:Debug"

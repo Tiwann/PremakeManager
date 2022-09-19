@@ -2,10 +2,10 @@
 #include "Project.h"
 #include "Workspace.h"
 #include "Core.h"
-#include "ImGui/ImGuiWrapper.h"
+#include "Logger.h"
+#include "ImGuiWrapper.h"
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
-#include <fmt/printf.h>
 
 
 static void OnGLFWError(int code, const char* message)
@@ -21,10 +21,18 @@ static void OnFramebufferResize(GLFWwindow* window, int32_t width, int32_t heigh
 
 int main(int argc, const char** argv)
 {
+    auto logger = Logger::GetLogger();
+    logger.set_pattern("[%T] %v");
+
     constexpr uint16_t WIDTH = 1024;
     constexpr uint16_t HEIGHT = 576;
+    bool success;
 
-    PremanAssert(glfwInit() && "Failed to initialize GLFW!");
+    if ((success = glfwInit()) == false)
+    {
+
+    }
+    PremanAssert(success && "Failed to initialize GLFW!");
     
     glfwSetErrorCallback(OnGLFWError);
 
@@ -39,9 +47,11 @@ int main(int argc, const char** argv)
     glfwSetFramebufferSizeCallback(window, OnFramebufferResize);
     glfwMakeContextCurrent(window);
     
-    PremanAssert(gladLoadGL(glfwGetProcAddress) && "Failed to initialize OpenGL!");
+    success = gladLoadGL(glfwGetProcAddress);
+    PremanAssert(success && "Failed to initialize OpenGL!");
   
-    PremanAssert(ImGuiWrapper::Initialize("#version 450", window, nullptr) && "ImGui init failed!");
+    success = ImGuiWrapper::Initialize("#version 450", window, nullptr);
+    PremanAssert(success && "ImGui init failed!");
 
 
     while(!glfwWindowShouldClose(window))
@@ -50,8 +60,7 @@ int main(int argc, const char** argv)
         glClear(GL_COLOR_BUFFER_BIT);
 
         // Render here
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplGlfw_NewFrame();
+        ImGuiWrapper::NewFrame();
         ImGui::NewFrame();
         {
             if(ImGui::Begin("Premake Manager"))
