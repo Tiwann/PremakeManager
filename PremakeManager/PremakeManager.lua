@@ -8,12 +8,14 @@ project "PremakeManager"
 	objdir(objs)
 
 	files {
+	    "PremakeManager.lua",
+		"Include/**.h",
 		"Source/**.cpp",
-		"Source/**.h",
 		"Source/**.inl",
 	}
 
 	includedirs {
+	    "%{prj.location}/Include",
 		"%{wks.location}/Vendor/glfw/include",
 		"%{wks.location}/Vendor/glad/include",
 		"%{wks.location}/Vendor/imgui",

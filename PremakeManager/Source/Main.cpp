@@ -42,7 +42,7 @@ int main(int argc, const char** argv)
     
     PremanAssert(gladLoadGL(glfwGetProcAddress) && "Failed to initialize OpenGL!");
     
-    PremanAssert(ImGuiWrapper::Initialize("#version 450", window, nullptr) && "ImGui init failed!");
+    PremanAssert(ImGuiWrapper::Initialize("#version 450", window, ImGuiWrapper::SetGuiStyleGalaxy) && "ImGui init failed!");
 
 
     while(!glfwWindowShouldClose(window))
@@ -54,35 +54,80 @@ int main(int argc, const char** argv)
         ImGuiWrapper::NewFrame();
         ImGui::NewFrame();
         {
+            ImGui::ShowDemoWindow();
             ImGui::SetNextWindowPos(ImVec2(0.0f, 0.0f), ImGuiCond_Always);
             ImGui::SetNextWindowSize(ImVec2(WIDTH, HEIGHT));
             ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
             ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
             ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+            
             const ImGuiWindowFlags flags = ImGuiWindowFlags_MenuBar
-            | ImGuiWindowFlags_NoDocking
-            | ImGuiWindowFlags_NoTitleBar
-            | ImGuiWindowFlags_NoCollapse
-            | ImGuiWindowFlags_NoResize
-            | ImGuiWindowFlags_NoMove
-            | ImGuiWindowFlags_NoBringToFrontOnFocus
-            | ImGuiWindowFlags_NoNavFocus;
+                                         | ImGuiWindowFlags_NoDocking
+                                         | ImGuiWindowFlags_NoTitleBar
+                                         | ImGuiWindowFlags_NoCollapse
+                                         | ImGuiWindowFlags_NoResize
+                                         | ImGuiWindowFlags_NoMove
+                                         | ImGuiWindowFlags_NoBringToFrontOnFocus
+                                         | ImGuiWindowFlags_NoNavFocus;
 
             //ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 
+            bool can_save = false;
             if(ImGui::Begin("Premake manager", nullptr, flags))
             {
                 ImGui::PopStyleVar(3);
                 ImGui::DockSpace(ImGui::GetID("Dockspace"));
+                if(ImGui::BeginMenuBar())
+                {
+                    if(ImGui::BeginMenu("File"))
+                    {
+                        if(ImGui::MenuItem("New Workspace"))
+                        {
+                            
+                        }
+
+                        if(ImGui::MenuItem("Open Workspace"))
+                        {
+                            
+                        }
+
+                        if(ImGui::MenuItem("Save", nullptr, nullptr, can_save))
+                        {
+                            
+                        }
+
+                        if(ImGui::MenuItem("Exit"))
+                        {
+                            std::exit(EXIT_SUCCESS);
+                        }
+                        ImGui::EndMenu();
+                    }
+
+                    if(ImGui::BeginMenu("Edit"))
+                    {
+                        ImGui::EndMenu();
+                    }
+
+                    if(ImGui::BeginMenu("View"))
+                    {
+                        ImGui::EndMenu();
+                    }
+
+                    if(ImGui::BeginMenu("Build"))
+                    {
+                        ImGui::EndMenu();
+                    }
+
+                    if(ImGui::BeginMenu("Help"))
+                    {
+                        ImGui::EndMenu();
+                    }
+                    ImGui::EndMenuBar();
+                }
                 ImGui::End();
             }
 
-
-            if(ImGui::Begin("Test"))
-            {
-                ImGui::End();
-            }
-
+            
             ImGui::EndFrame();
         }
         
