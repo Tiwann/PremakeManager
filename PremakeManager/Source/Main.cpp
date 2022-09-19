@@ -21,18 +21,11 @@ static void OnFramebufferResize(GLFWwindow* window, int32_t width, int32_t heigh
 
 int main(int argc, const char** argv)
 {
-    auto logger = Logger::GetLogger();
-    logger.set_pattern("[%T] %v");
-
     constexpr uint16_t WIDTH = 1024;
     constexpr uint16_t HEIGHT = 576;
-    bool success;
 
-    if ((success = glfwInit()) == false)
-    {
-
-    }
-    PremanAssert(success && "Failed to initialize GLFW!");
+    
+    PremanAssert(glfwInit() && "Failed to initialize GLFW!");
     
     glfwSetErrorCallback(OnGLFWError);
 
@@ -47,11 +40,9 @@ int main(int argc, const char** argv)
     glfwSetFramebufferSizeCallback(window, OnFramebufferResize);
     glfwMakeContextCurrent(window);
     
-    success = gladLoadGL(glfwGetProcAddress);
-    PremanAssert(success && "Failed to initialize OpenGL!");
-  
-    success = ImGuiWrapper::Initialize("#version 450", window, nullptr);
-    PremanAssert(success && "ImGui init failed!");
+    PremanAssert(gladLoadGL(glfwGetProcAddress) && "Failed to initialize OpenGL!");
+    
+    PremanAssert(ImGuiWrapper::Initialize("#version 450", window, nullptr) && "ImGui init failed!");
 
 
     while(!glfwWindowShouldClose(window))
@@ -63,20 +54,39 @@ int main(int argc, const char** argv)
         ImGuiWrapper::NewFrame();
         ImGui::NewFrame();
         {
-            if(ImGui::Begin("Premake Manager"))
-            {
-                static bool checked = false;
-                ImGui::Checkbox("Test Checkbox", &checked);
-                if (checked)
-                {
-                    ImGui::Text("Checkbox checked!");
-                }
-            }
-            ImGui::End();
-        }
-        ImGui::EndFrame();
+            ImGui::SetNextWindowPos(ImVec2(0.0f, 0.0f), ImGuiCond_Always);
+            ImGui::SetNextWindowSize(ImVec2(WIDTH, HEIGHT));
+            ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+            ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+            ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+            const ImGuiWindowFlags flags = ImGuiWindowFlags_MenuBar
+            | ImGuiWindowFlags_NoDocking
+            | ImGuiWindowFlags_NoTitleBar
+            | ImGuiWindowFlags_NoCollapse
+            | ImGuiWindowFlags_NoResize
+            | ImGuiWindowFlags_NoMove
+            | ImGuiWindowFlags_NoBringToFrontOnFocus
+            | ImGuiWindowFlags_NoNavFocus;
 
-       
+            //ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
+
+            if(ImGui::Begin("Premake manager", nullptr, flags))
+            {
+                ImGui::PopStyleVar(3);
+                ImGui::DockSpace(ImGui::GetID("Dockspace"));
+                ImGui::End();
+            }
+
+
+            if(ImGui::Begin("Test"))
+            {
+                ImGui::End();
+            }
+
+            ImGui::EndFrame();
+        }
+        
+
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
