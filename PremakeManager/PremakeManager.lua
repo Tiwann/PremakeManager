@@ -12,6 +12,10 @@ project "PremakeManager"
 		"Include/**.h",
 		"Source/**.cpp",
 		"Source/**.inl",
+		"Assets/**",
+		"External/**.h",
+		"External/**.c",
+		"External/**.cpp",
 	}
 
 	includedirs {
@@ -45,3 +49,4 @@ project "PremakeManager"
 
 	filter "system:windows"
 		defines "_CRT_SECURE_NO_WARNINGS"
+		kind "WindowedApp"
