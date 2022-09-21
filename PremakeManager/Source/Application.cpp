@@ -24,6 +24,7 @@ void Application::Initialize()
     PremanAssert(m_window && "Failed to create window!");
     fmt::print("GLFW window created!\n");
 
+    
     // Set the window callbacks then make opengl context current
     glfwSetFramebufferSizeCallback(m_window, OnFramebufferResizeCallback);
     glfwSetWindowSizeCallback(m_window, OnWindowResizeCallback);
