@@ -8,6 +8,7 @@ bool ImGuiWrapper::Initialize(const std::string& glsl_version, GLFWwindow* windo
     ImGuiContext* context = ImGui::CreateContext();
     if (!context) return false;
     ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.Fonts->AddFontFromFileTTF("/home/tiwann/dev/PremakeManager/PremakeManager/Assets/Fonts/OpenSans-Regular.ttf", 16.0f);
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     if(stylefunc) stylefunc();
     else ImGui::StyleColorsDark();
@@ -38,7 +39,7 @@ void ImGuiWrapper::SetGuiStyleGalaxy()
     colors[ImGuiCol_FrameBgHovered] = ImVec4(0.15f, 0.15f, 0.15f, 1.0f);
     colors[ImGuiCol_FrameBgActive] = ImVec4(0.25f, 0.25f, 0.25f, 1.0f);
     colors[ImGuiCol_TitleBg] = ImVec4(0.04f, 0.04f, 0.04f, 1.00f);
-    colors[ImGuiCol_TitleBgActive] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f);
+    colors[ImGuiCol_TitleBgActive] = ImVec4(0.03f, 0.03f, 0.03f, 1.00f);
     colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.00f, 0.00f, 0.00f, 0.51f);
     colors[ImGuiCol_MenuBarBg] = ImVec4(0.14f, 0.14f, 0.14f, 1.00f);
     colors[ImGuiCol_ScrollbarBg] = ImVec4(0.02f, 0.02f, 0.02f, 0.53f);
