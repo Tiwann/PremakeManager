@@ -1,4 +1,5 @@
 #include "ImGuiWrapper.h"
+#include "Assets.h"
 
 
 
@@ -8,7 +9,9 @@ bool ImGuiWrapper::Initialize(const std::string& glsl_version, GLFWwindow* windo
     ImGuiContext* context = ImGui::CreateContext();
     if (!context) return false;
     ImGuiIO& io = ImGui::GetIO(); (void)io;
-    io.Fonts->AddFontFromFileTTF("/home/tiwann/dev/PremakeManager/PremakeManager/Assets/Fonts/OpenSans-Regular.ttf", 16.0f);
+    const std::string open_sans_font_file = Assets::GetAssetAt("Fonts/OpenSans-Regular.ttf").string();
+    io.Fonts->AddFontFromFileTTF(open_sans_font_file.c_str(), 16.0f);
+    
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     if(stylefunc) stylefunc();
     else ImGui::StyleColorsDark();
